@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Suspense} from 'react';
 import './App.css';
+import {useResource} from './resource'
+import { Posts } from './Posts';
+import { Photos } from './Photos';
+import Table from './component/table'
+import Mytable from './component/mytable';
 
+const resource = useResource()
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" className="container">
+      <h2>Фотоальбом</h2>
+      <Mytable />
+      {/* <Suspense fallback={<p>Загружается...</p>}>
+        <Table resource={resource}/>
+      </Suspense> */}
+      {/* <Suspense fallback={<p>Загружается...</p>}>
+        <Posts resource={resource}/>
+      </Suspense>
+      <Suspense fallback={<p>Загружается...</p>}>
+        <Photos resource={resource}/>
+      </Suspense> */}
     </div>
   );
 }
